@@ -28,4 +28,12 @@ public class CategoriaService {
 				.findFirst()
 				.orElseThrow(() -> new ObjectNotFoundErros("tipo não encontrado! tipo: " + tipo));
 	}
+	
+	public Categoria getDescricao(String descricao) {
+		List<Categoria> lista = getCategoriaRepository.findAll();
+		return lista.stream()
+				.filter(categoria -> categoria.getDescricao().equals(descricao))
+				.findFirst()
+				.orElseThrow(()-> new ObjectNotFoundErros("Descrição não encontrada: -> " + descricao));
+	}
 }

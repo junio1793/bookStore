@@ -16,16 +16,22 @@ public class CategoriaController {
 
 	@Autowired
 	private CategoriaService categoriaService;
-	
-	@GetMapping(value = "/{id}")
-	public ResponseEntity<Categoria> getById(@PathVariable  Long id) {
+
+	@GetMapping(value = "/id/{id}")
+	public ResponseEntity<Categoria> getById(@PathVariable Long id) {
 		Categoria resultado = categoriaService.findById(id);
 		return ResponseEntity.ok().body(resultado);
 	}
-	
-	@GetMapping(value = "/{tipo}")
+
+	@GetMapping(value = "/tipo/{tipo}")
 	public ResponseEntity<Categoria> getCatPorTipo(@PathVariable String tipo) {
 		Categoria result = categoriaService.getTipoCatagoria(tipo);
+		return ResponseEntity.ok().body(result);
+	}
+
+	@GetMapping(value = "/descricao/{descricao}")
+	public ResponseEntity<Categoria> getCategoria(@PathVariable String descricao) {
+		Categoria result = categoriaService.getDescricao(descricao);
 		return ResponseEntity.ok().body(result);
 	}
 }

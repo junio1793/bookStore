@@ -14,8 +14,16 @@ public class ResourceExceptionHandler {
 
 	
 	@ExceptionHandler(ObjectNotFoundErros.class)
-	public ResponseEntity<StandardError> objectNotFoundException(ObjectNotFoundErros e , ServletRequest request){
+	public ResponseEntity<StandardError> handleObjectNotFoundExceptionNotFound(ObjectNotFoundErros e , ServletRequest request){
 		StandardError error = new StandardError(System.currentTimeMillis(), HttpStatus.NOT_FOUND.value(), e.getMessage());
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
 	}
+	
+	/*
+	@ExceptionHandler(ObjectNotFoundErros.class)
+	public ResponseEntity<StandardError> handleObjectNotFoundExceptionBadRequest(ObjectNotFoundErros e , ServletRequest request){
+		StandardError error = new StandardError(System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value(), e.getMessage());
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+	}
+	*/
 }
