@@ -44,11 +44,11 @@ public class Categoria implements Serializable {
 		this.id = id;
 	}
 
-	public String gettipo() {
+	public String getTipo() {
 		return tipo;
 	}
 
-	public void settipo(String tipo) {
+	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
 

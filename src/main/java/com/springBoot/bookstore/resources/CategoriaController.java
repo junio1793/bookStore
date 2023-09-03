@@ -23,4 +23,9 @@ public class CategoriaController {
 		return ResponseEntity.ok().body(resultado);
 	}
 	
+	@GetMapping(value = "/{tipo}")
+	public ResponseEntity<Categoria> getCatPorTipo(@PathVariable String tipo) {
+		Categoria result = categoriaService.getTipoCatagoria(tipo);
+		return ResponseEntity.ok().body(result);
+	}
 }
