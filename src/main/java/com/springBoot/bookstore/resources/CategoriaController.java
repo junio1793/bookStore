@@ -1,5 +1,7 @@
 package com.springBoot.bookstore.resources;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.springBoot.bookstore.categoriaDTO.CategoriaDTO;
 import com.springBoot.bookstore.dominio.Categoria;
 import com.springBoot.bookstore.service.CategoriaService;
 
@@ -34,4 +37,17 @@ public class CategoriaController {
 		Categoria result = categoriaService.getDescricao(descricao);
 		return ResponseEntity.ok().body(result);
 	}
+	
+	@GetMapping(value = "/todasCategorias")
+	public ResponseEntity<List<CategoriaDTO>> getCategoria(){
+		List<CategoriaDTO> result =  categoriaService.getCategoriaDTOall();
+		return ResponseEntity.ok().body(result);
+	}
+	
+	@GetMapping
+	public ResponseEntity<List<Categoria>> getAll(){
+		List<Categoria> result = categoriaService.getCategoriaElivros();
+		return ResponseEntity.ok(result);
+	}
+	
 }

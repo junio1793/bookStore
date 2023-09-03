@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.springBoot.bookstore.categoriaDTO.CategoriaDTO;
 import com.springBoot.bookstore.dominio.Categoria;
 import com.springBoot.bookstore.repository.CategoriaRepository;
 import com.springBoot.bookstore.service.exceptions.ObjectNotFoundErros;
@@ -35,5 +36,15 @@ public class CategoriaService {
 				.filter(categoria -> categoria.getDescricao().equals(descricao))
 				.findFirst()
 				.orElseThrow(()-> new ObjectNotFoundErros("Descrição não encontrada: -> " + descricao));
+	}
+	
+	public List<CategoriaDTO> getCategoriaDTOall(){
+		List<Categoria> categoria = getCategoriaRepository.findAll();
+		return categoria.stream().map(x -> new CategoriaDTO(x)).toList();
+	}
+	
+	public List<Categoria> getCategoriaElivros(){
+		List<Categoria> lista = getCategoriaRepository.findAll();
+		return lista;
 	}
 }
