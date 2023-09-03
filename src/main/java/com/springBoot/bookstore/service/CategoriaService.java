@@ -47,4 +47,16 @@ public class CategoriaService {
 		List<Categoria> lista = getCategoriaRepository.findAll();
 		return lista;
 	}
+
+	public Categoria save(Categoria categoria) {
+		categoria.setId(null);
+		return getCategoriaRepository.save(categoria);
+	}
+
+	public Categoria update(Long id, CategoriaDTO categoriaDTO) {
+		Categoria categoria = findById(id);
+		categoria.setTipo(categoriaDTO.getTipo());
+		categoria.setDescricao(categoriaDTO.getDescricao());
+		return getCategoriaRepository.save(categoria);
+	}
 }
