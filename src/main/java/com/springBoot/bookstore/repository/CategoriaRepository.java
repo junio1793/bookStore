@@ -7,5 +7,4 @@ import com.springBoot.bookstore.dominio.Categoria;
 
 @Repository
 public interface CategoriaRepository extends JpaRepository<Categoria, Long> {
-
 }
